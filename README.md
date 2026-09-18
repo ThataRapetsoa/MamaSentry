@@ -121,9 +121,17 @@ mamasentry/
 4. Copy the environment template and spin up the microservice application server:
    ```bash
    cp .env.example .env
-   python main.py
+   uvicorn main:app --reload
    ```
-   *The api server will run on `http://127.0.0.1:8000` by default.*
+   *The API server will run on `http://127.0.0.1:8000` by default.*
+5. Open the interactive API documentation at `http://127.0.0.1:8000/docs`.
+
+### Example request
+```json
+{
+  "message": "URGENT!!! Send R5000 now to verify your account."
+}
+```
 
 ### 💻 Frontend Setup
 1. Open a terminal tab and transition into the UI directory:

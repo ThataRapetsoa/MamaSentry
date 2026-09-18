@@ -1,0 +1,6 @@
+export function renderRiskResult(container, result) {
+  if (result.empty) { container.innerHTML = `<div class="result-card result-empty"><div class="radar-mark">✦</div><h3>Your check will appear here</h3><p>Submit a message, link or screenshot and we will explain what we find.</p></div>`; return }
+  if (result.loading) { container.innerHTML = `<div class="result-card result-loading"><div class="loading-spinner"></div><h3>Reading between the lines...</h3><p>Looking for common fraud signals.</p></div>`; return }
+  const tone = result.classification === 'CRITICAL THREAT' ? 'critical' : result.classification === 'SUSPICIOUS' ? 'suspicious' : 'safe'
+  container.innerHTML = `<div class="result-card result-${tone}"><div class="result-top"><span class="result-icon">${tone === 'safe' ? '✓' : '!'}</span><span class="result-label">${result.classification}</span><span class="score">${result.score}<small>/100</small></span></div><div class="score-track"><span style="width:${Math.max(result.score, 5)}%"></span></div><p class="result-summary">${tone === 'safe' ? 'This looks okay for now.' : tone === 'suspicious' ? 'There are signs worth checking first.' : 'This message shows several high-risk signs.'}</p></div>`
+}
