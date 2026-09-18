@@ -1,0 +1,3 @@
+export function renderThreatReasons(container, result) {
+  container.innerHTML = `<div class="explanation-card"><div class="explanation-heading"><span>03</span><div><h2>What we noticed</h2><p>${result.indicators.length ? 'These signals shaped your result.' : 'No common fraud signals were detected.'}</p></div></div>${result.indicators.length ? `<ul class="reason-list">${result.indicators.map((item) => `<li><span class="reason-icon">!</span><div><strong>${item.label}</strong><p>${item.detail}</p></div><b>+${item.points}</b></li>`).join('')}</ul>` : ''}<div class="action-callout"><span class="action-icon">→</span><div><small>SAFEST NEXT STEP</small><strong>${result.action}</strong></div></div></div>`
+}
